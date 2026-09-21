@@ -1,0 +1,15 @@
+.split {
+  display: block;
+}
+.w {
+  display: inline-block;
+  overflow: hidden;
+  /* room for descenders/accents inside the mask */
+  padding: 0.06em 0 0.1em;
+  margin: -0.06em 0 -0.1em;
+  white-space: nowrap;
+}
+.c {
+  display: inline-block;
+  will-change: transform;
+}

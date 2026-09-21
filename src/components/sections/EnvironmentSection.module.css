@@ -1,0 +1,152 @@
+.scene {
+  position: absolute;
+  inset: 0;
+  background: var(--c-0);
+  overflow: hidden;
+}
+
+.cover {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.coverInner {
+  position: absolute;
+  left: var(--fx);
+  top: var(--fy);
+  transform: translate(calc(var(--fx) * -1), calc(var(--fy) * -1));
+  width: max(100vw, calc(100vh * var(--ar)));
+  aspect-ratio: var(--ar);
+}
+.zoom {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.coverInner img {
+  position: absolute;
+  max-width: none;
+  filter: contrast(1.05) saturate(0.94) brightness(0.96);
+  user-select: none;
+}
+
+/* keeps the title legible on any picture without ever looking like a "card" */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(3, 3, 3, 0.78) 0%, rgba(3, 3, 3, 0.1) 46%, rgba(3, 3, 3, 0) 70%);
+  pointer-events: none;
+}
+
+.copy {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 12vh;
+  display: grid;
+  gap: 18px;
+  justify-items: start;
+}
+.title {
+  font-size: clamp(2.8rem, 8.6vw, 9.4rem);
+  max-width: 14ch;
+}
+.w {
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.06em 0 0.1em;
+  margin: -0.06em 0 -0.1em;
+  white-space: nowrap;
+}
+.c {
+  display: inline-block;
+}
+.caption {
+  max-width: 34ch;
+}
+
+.kicker {
+  position: absolute;
+  left: var(--gutter);
+  top: calc(var(--nav-h) + 3vh);
+  z-index: 20;
+}
+
+.index {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 56px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.index i {
+  font-style: normal;
+  color: var(--c-faint);
+}
+.ticks {
+  display: flex;
+  gap: 5px;
+}
+.tick {
+  width: 22px;
+  height: 1px;
+  background: var(--c-line);
+  transition: background 0.5s ease, width 0.5s var(--ease-out);
+}
+.tick[data-active] {
+  background: var(--c-amber);
+  width: 34px;
+}
+
+@media (max-width: 720px) {
+  .copy {
+    bottom: 14vh;
+  }
+  .title {
+    font-size: clamp(2.6rem, 14vw, 5rem);
+  }
+  .kicker {
+    display: none;
+  }
+}
+
+/* ── title placement per picture (never over the machine) ── */
+.scene[data-copy='tl'] .scrim {
+  background: linear-gradient(to bottom, rgba(3, 3, 3, 0.62) 0%, rgba(3, 3, 3, 0) 42%),
+    linear-gradient(to top, rgba(3, 3, 3, 0.4) 0%, rgba(3, 3, 3, 0) 30%);
+}
+.scene[data-copy='tr'] .scrim {
+  background: linear-gradient(to bottom, rgba(3, 3, 3, 0.55) 0%, rgba(3, 3, 3, 0) 45%),
+    linear-gradient(to top, rgba(3, 3, 3, 0.35) 0%, rgba(3, 3, 3, 0) 28%);
+}
+.scene[data-copy='tl'] .copy,
+.scene[data-copy='tr'] .copy {
+  bottom: auto;
+  top: calc(var(--nav-h) + 8vh);
+}
+.scene[data-copy='tl'] .title,
+.scene[data-copy='tr'] .title {
+  font-size: clamp(2.2rem, 4.4vw, 5rem);
+  max-width: 11ch;
+}
+.scene[data-copy='tl'] .caption,
+.scene[data-copy='tr'] .caption {
+  max-width: 26ch;
+}
+.scene[data-copy='tr'] .copy {
+  justify-items: end;
+  text-align: right;
+}
+
+@media (max-width: 720px) {
+  .scene[data-copy='tl'] .copy,
+  .scene[data-copy='tr'] .copy {
+    top: calc(var(--nav-h) + 5vh);
+  }
+  .scene[data-copy='tl'] .title,
+  .scene[data-copy='tr'] .title {
+    font-size: clamp(2.2rem, 12vw, 4.2rem);
+  }
+}

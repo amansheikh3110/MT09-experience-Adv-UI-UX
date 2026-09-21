@@ -1,0 +1,196 @@
+.section {
+  padding-top: 10vh;
+  padding-bottom: 8vh;
+  overflow-x: clip;
+}
+
+.scene {
+  position: relative;
+}
+
+.statement {
+  font-size: clamp(2.8rem, 8vw, 8.4rem);
+  max-width: 11ch;
+}
+.mid {
+  font-size: clamp(1.9rem, 4.2vw, 4.6rem);
+  line-height: 0.98;
+}
+.para {
+  font-size: clamp(1.05rem, 1.5vw, 1.5rem);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--c-text);
+  margin-top: 14px;
+  max-width: 22ch;
+}
+
+/* ── 1 ─ */
+.s1 {
+  height: 142vh;
+}
+.s1Head {
+  position: absolute;
+  left: var(--gutter);
+  top: 4vh;
+  display: grid;
+  gap: 22px;
+  z-index: 2;
+}
+.s1Plate {
+  position: absolute;
+  right: 0;
+  top: 30vh;
+  width: 86vw;
+}
+.s1Note {
+  position: absolute;
+  left: var(--gutter);
+  bottom: 2vh;
+  max-width: 26ch;
+}
+
+/* ── 2 ─ */
+.s2 {
+  height: 112vh;
+}
+.s2Plate {
+  position: absolute;
+  left: 0;
+  top: 10vh;
+  width: 100vw;
+}
+.s2Text {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 4vh;
+  text-align: right;
+  max-width: 13ch;
+}
+
+/* ── 3 ─ */
+.s3 {
+  height: 150vh;
+}
+.s3A {
+  position: absolute;
+  left: var(--gutter);
+  top: 6vh;
+  width: 60vw;
+}
+.s3B {
+  position: absolute;
+  right: calc(var(--gutter) * 1.4);
+  top: 34vh;
+  width: 30vw;
+  z-index: 2;
+}
+.s3Text {
+  position: absolute;
+  left: var(--gutter);
+  top: 74vh;
+}
+
+/* ── 4 ─ */
+.s4 {
+  height: 96vh;
+}
+.s4Plate {
+  position: absolute;
+  left: 0;
+  top: 8vh;
+  width: 100vw;
+}
+
+/* ── 5 ─ */
+.s5 {
+  height: 132vh;
+}
+.s5A {
+  position: absolute;
+  left: 7vw;
+  top: 4vh;
+  width: 34vw;
+}
+.s5B {
+  position: absolute;
+  right: 6vw;
+  top: 34vh;
+  width: 46vw;
+}
+.s5Text {
+  position: absolute;
+  left: 8vw;
+  bottom: 6vh;
+  max-width: 12ch;
+}
+
+/* ── phones / narrow: one column, full-bleed plates, staggered indents ── */
+@media (max-width: 900px) {
+  .section {
+    padding-top: 14vh;
+  }
+  .scene {
+    height: auto !important;
+    display: grid;
+    gap: 44px;
+    padding: 0 0 72px;
+  }
+  .s1Head,
+  .s1Plate,
+  .s1Note,
+  .s2Plate,
+  .s2Text,
+  .s3A,
+  .s3B,
+  .s3Text,
+  .s4Plate,
+  .s5A,
+  .s5B,
+  .s5Text {
+    position: relative;
+    inset: auto;
+    width: auto;
+    max-width: none;
+    padding-inline: 0;
+  }
+  .s1Head,
+  .s1Note,
+  .s2Text,
+  .s3Text,
+  .s5Text {
+    padding-inline: var(--gutter);
+  }
+  .s1Head {
+    margin-bottom: 8px;
+  }
+  .s2Plate {
+    margin-inline: calc(var(--gutter) * -0 );
+  }
+  .s2Text {
+    text-align: left;
+  }
+  .s3A {
+    margin-left: var(--gutter);
+  }
+  .s3B {
+    width: 72vw;
+    margin-left: auto;
+    margin-right: var(--gutter);
+    margin-top: -14vw;
+  }
+  .s5A {
+    width: 78vw;
+    margin-left: var(--gutter);
+  }
+  .s5B {
+    margin-left: 10vw;
+    margin-right: 0;
+  }
+  .statement {
+    font-size: clamp(2.6rem, 14vw, 5rem);
+  }
+  .mid {
+    font-size: clamp(1.8rem, 9vw, 3rem);
+  }
+}

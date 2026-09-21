@@ -1,0 +1,134 @@
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  will-change: transform;
+}
+
+.dot {
+  position: absolute;
+  left: -6px;
+  top: -6px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--c-text);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.6s var(--ease-out);
+}
+.dot::after {
+  content: '';
+  position: absolute;
+  inset: 3.5px;
+  border-radius: 50%;
+  background: var(--c-text);
+}
+.label[data-on] .dot {
+  transform: scale(1);
+}
+
+.svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.line {
+  stroke: var(--c-text);
+  stroke-width: 1;
+  opacity: 0.85;
+  transition: stroke-dashoffset 0.9s var(--ease-io) 0.15s;
+}
+.label[data-on] .line {
+  stroke-dashoffset: 0 !important;
+}
+
+.text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+}
+.textInner {
+  display: grid;
+  gap: 3px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transition-delay: 0s;
+}
+.right .textInner {
+  translate: 12px -50%;
+}
+.left .textInner {
+  text-align: right;
+  transform: translateX(-100%);
+  translate: -12px -50%;
+}
+.label[data-on] .textInner {
+  opacity: 1;
+  transition-delay: 0.7s;
+}
+.textInner :global(.mono) {
+  display: flex;
+  gap: 10px;
+  font-size: 0.6875rem;
+}
+.left .textInner :global(.mono) {
+  justify-content: flex-end;
+}
+.textInner :global(.mono:last-child) {
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+}
+.textInner b {
+  font-weight: 400;
+  color: var(--c-amber);
+}
+
+/* left-hand legend: the six systems, the live ones lit */
+.legend {
+  position: absolute;
+  left: var(--gutter);
+  bottom: 64px;
+  list-style: none;
+  display: grid;
+  gap: 5px;
+}
+.legend li {
+  display: flex;
+  gap: 12px;
+  color: var(--c-faint);
+  font-size: 0.625rem;
+  transition: color 0.5s ease, transform 0.6s var(--ease-out);
+}
+.legend li i {
+  font-style: normal;
+  transition: color 0.5s ease;
+}
+.legend li[data-on] {
+  color: var(--c-text);
+  transform: translateX(8px);
+}
+.legend li[data-on] i {
+  color: var(--c-amber);
+}
+
+@media (max-width: 720px) {
+  .textInner :global(.mono) {
+    font-size: 0.5625rem;
+  }
+  .textInner :global(.mono:last-child) {
+    display: none;
+  }
+  .legend {
+    display: none;
+  }
+}

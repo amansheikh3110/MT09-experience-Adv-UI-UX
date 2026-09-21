@@ -1,0 +1,187 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   DESIGN TOKENS
+   Black · charcoal · graphite · warm white · one restrained amber.
+   Orange lives on the motorcycle; the interface only whispers it.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --c-0: #050505;
+  --c-1: #0a0a0a;
+  --c-2: #111111;
+  --c-3: #1a1a1a;
+  --c-4: #262626;
+
+  --c-text: #eee9df; /* warm white */
+  --c-dim: rgba(238, 233, 223, 0.6);
+  --c-faint: rgba(238, 233, 223, 0.34);
+  --c-line: rgba(238, 233, 223, 0.16);
+  --c-line-soft: rgba(238, 233, 223, 0.08);
+
+  --c-amber: #e8791c;
+
+  --f-display: var(--font-display), 'Helvetica Neue', Arial, sans-serif;
+  --f-mono: var(--font-mono), ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --gutter: clamp(20px, 3.4vw, 60px);
+  --nav-h: 76px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--c-0);
+  color: var(--c-text);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+html.is-locked,
+html.is-locked body {
+  overflow: hidden;
+}
+
+body {
+  background: var(--c-0);
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+::selection {
+  background: var(--c-amber);
+  color: #000;
+}
+
+:focus-visible {
+  outline: 1px solid var(--c-text);
+  outline-offset: 4px;
+}
+
+/* ── type ─────────────────────────────────────────────────────────────── */
+
+.mono {
+  font-family: var(--f-mono);
+  font-weight: 400;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+.mono--dim {
+  color: var(--c-dim);
+}
+.mono--faint {
+  color: var(--c-faint);
+}
+
+.display {
+  font-family: var(--f-display);
+  font-weight: 300;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+}
+
+.lede {
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.6;
+  color: var(--c-dim);
+  max-width: 34ch;
+}
+
+/* ── the fixed 3D canvas layer ────────────────────────────────────────── */
+
+.canvas-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: #000;
+}
+.canvas-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ── layout primitives ────────────────────────────────────────────────── */
+
+.page {
+  position: relative;
+  z-index: 2;
+}
+
+/* a 3D chapter: tall scroll distance + a sticky viewport-sized layer inside */
+.stage-section {
+  position: relative;
+}
+.stage-section__pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: clip;
+}
+
+/* opaque editorial chapter that slides over the fixed canvas */
+.opaque {
+  position: relative;
+  background: var(--c-0);
+  z-index: 3;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}

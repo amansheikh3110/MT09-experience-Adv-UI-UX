@@ -1,0 +1,107 @@
+.section {
+  height: 340vh;
+}
+
+.mood {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: end;
+  justify-items: center;
+  gap: 22px;
+  padding-bottom: 13vh;
+  text-align: center;
+}
+.q {
+  font-size: clamp(2.6rem, 6.4vw, 7rem);
+}
+
+.actions {
+  display: flex;
+  gap: clamp(28px, 5vw, 72px);
+  margin-top: 14px;
+}
+.action {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 2px;
+  color: var(--c-text);
+  letter-spacing: 0.3em;
+  opacity: 0;
+}
+.action::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--c-text);
+  transform: scaleX(0.28);
+  transform-origin: left;
+  opacity: 0.5;
+  transition: transform 0.7s var(--ease-out), opacity 0.4s ease;
+}
+.action i {
+  font-style: normal;
+  transition: transform 0.6s var(--ease-out);
+}
+.action:hover::after,
+.action:focus-visible::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+.action:hover i {
+  transform: translateX(6px);
+}
+.action:active {
+  scale: 0.985;
+}
+
+.foot {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 26px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  font-size: 0.625rem;
+  opacity: 0;
+}
+.foot a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.foot a:hover {
+  color: var(--c-text);
+}
+
+@media (max-width: 720px) {
+  .section {
+    height: 300vh;
+  }
+  .center {
+    padding-bottom: 18vh;
+  }
+  .q {
+    font-size: clamp(2.4rem, 13vw, 4.4rem);
+  }
+  .foot {
+    flex-direction: column;
+    bottom: 20px;
+  }
+}

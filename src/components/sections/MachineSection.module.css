@@ -1,0 +1,124 @@
+.section {
+  height: 460vh;
+}
+
+/* the quiet furniture only appears once the machine has been revealed */
+.gate {
+  opacity: 0;
+  transition: opacity 2.2s var(--ease-out) 0.6s;
+}
+.gateOn {
+  opacity: 1;
+}
+
+.tag {
+  position: absolute;
+  left: var(--gutter);
+  bottom: 64px;
+  display: grid;
+  gap: 4px;
+}
+
+.cue {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 64px;
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+}
+.cueLine {
+  width: 1px;
+  height: 46px;
+  background: var(--c-line);
+  position: relative;
+  overflow: hidden;
+}
+.cueLine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--c-text);
+  transform: translateY(-100%);
+  animation: cue 2.4s var(--ease-io) infinite;
+}
+@keyframes cue {
+  0% { transform: translateY(-100%); }
+  55%, 100% { transform: translateY(100%); }
+}
+
+.block {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  top: clamp(72px, 13vh, 150px);
+  display: grid;
+  gap: 18px;
+  pointer-events: none;
+}
+.blockA {
+  justify-items: start;
+}
+.blockB {
+  justify-items: end;
+  text-align: right;
+}
+.big {
+  font-size: clamp(3rem, 9.6vw, 10rem);
+}
+.sub {
+  max-width: 30ch;
+  opacity: 0;
+}
+.blockB .sub {
+  margin-left: auto;
+}
+
+.closing {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 64px;
+  opacity: 0;
+}
+.rule {
+  display: block;
+  height: 1px;
+  background: var(--c-line);
+  transform-origin: left;
+  margin-bottom: 18px;
+}
+.closingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+}
+
+@media (max-width: 720px) {
+  .section {
+    height: 400vh;
+  }
+  .block {
+    top: auto;
+    bottom: 96px;
+    transform: none;
+  }
+  .blockB {
+    justify-items: start;
+    text-align: left;
+  }
+  .blockB .sub {
+    margin-left: 0;
+  }
+  .big {
+    font-size: clamp(2.6rem, 15vw, 5rem);
+  }
+  .closingRow {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .tag {
+    bottom: 76px;
+  }
+}

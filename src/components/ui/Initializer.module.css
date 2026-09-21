@@ -1,0 +1,52 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: #030303;
+}
+
+.center {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+}
+
+.label {
+  color: var(--c-dim);
+  letter-spacing: 0.32em;
+}
+
+.track {
+  position: relative;
+  width: min(240px, 52vw);
+  height: 1px;
+  background: var(--c-line);
+  overflow: hidden;
+}
+
+.bar {
+  position: absolute;
+  inset: 0;
+  background: var(--c-text);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.count {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.2em;
+}
+
+.corner {
+  position: absolute;
+}
+.tl {
+  top: 28px;
+  left: var(--gutter);
+}
+.br {
+  right: var(--gutter);
+  bottom: 28px;
+}

@@ -1,0 +1,25 @@
+.section {
+  height: 560vh;
+}
+
+.head {
+  position: absolute;
+  left: var(--gutter);
+  top: calc(var(--nav-h) + 3vh);
+  display: grid;
+  gap: 14px;
+  pointer-events: none;
+}
+.title {
+  font-size: clamp(1.7rem, 3.4vw, 3.4rem);
+  max-width: 14ch;
+}
+
+@media (max-width: 720px) {
+  .section {
+    height: 480vh;
+  }
+  .title {
+    font-size: clamp(1.6rem, 8vw, 2.4rem);
+  }
+}

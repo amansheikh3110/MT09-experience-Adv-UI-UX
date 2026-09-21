@@ -1,0 +1,155 @@
+.section {
+  height: 560vh;
+}
+
+.kicker {
+  position: absolute;
+  left: var(--gutter);
+  top: calc(var(--nav-h) + 3vh);
+}
+
+.stat {
+  position: absolute;
+  inset: 0;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  align-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.numWrap {
+  align-self: center;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(14px, 2.4vw, 40px);
+  margin-top: 8vh;
+}
+.num {
+  font-size: clamp(7.5rem, 30vw, 32rem);
+  font-weight: 200;
+  line-height: 0.78;
+  letter-spacing: -0.065em;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-text);
+  text-transform: none;
+}
+.outline .num {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--c-text);
+}
+.unit {
+  font-size: clamp(1.1rem, 2.6vw, 2.8rem);
+  letter-spacing: -0.02em;
+  padding-bottom: 1.2vw;
+  color: var(--c-text);
+}
+
+.meta {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 12vh;
+  display: grid;
+  gap: 14px;
+  max-width: 30ch;
+}
+.label {
+  color: var(--c-text);
+}
+
+.chart {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 34vh;
+  display: grid;
+  gap: 10px;
+  width: min(380px, 30vw);
+}
+.curves {
+  width: 100%;
+  overflow: visible;
+}
+.grid {
+  stroke: var(--c-line-soft);
+  stroke-width: 1;
+}
+.curve,
+.curveDim {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-dasharray: 1;
+  vector-effect: non-scaling-stroke;
+}
+.curve {
+  stroke: var(--c-text);
+}
+.curveDim {
+  stroke: var(--c-faint);
+}
+.svgText,
+.svgTextDim {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+.svgText {
+  fill: var(--c-text);
+}
+.svgTextDim {
+  fill: var(--c-faint);
+}
+
+.ticks {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 58px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tickTrack {
+  flex: 0 0 clamp(28px, 5vw, 72px);
+  height: 1px;
+  background: var(--c-line);
+  position: relative;
+  overflow: hidden;
+}
+.tickFill {
+  position: absolute;
+  inset: 0;
+  background: var(--c-text);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.ticks :global(.mono) {
+  margin-left: 10px;
+}
+
+@media (max-width: 720px) {
+  .section {
+    height: 480vh;
+  }
+  .num {
+    font-size: clamp(6rem, 42vw, 12rem);
+  }
+  .numWrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 0;
+  }
+  .unit {
+    padding: 0;
+  }
+  .meta {
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: 96px;
+    max-width: none;
+  }
+  .chart {
+    display: none;
+  }
+}

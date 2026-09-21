@@ -1,0 +1,192 @@
+.section {
+  height: 260vh;
+}
+
+.head {
+  position: absolute;
+  left: var(--gutter);
+  top: calc(var(--nav-h) + 3vh);
+  display: grid;
+  gap: 14px;
+}
+.title {
+  font-size: clamp(1.9rem, 3.6vw, 3.6rem);
+  max-width: 10ch;
+}
+
+/* ── groups: a quiet vertical index on the left ── */
+.groups {
+  position: absolute;
+  left: var(--gutter);
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 4px;
+}
+.group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  color: var(--c-faint);
+  text-align: left;
+  transition: color 0.4s ease, transform 0.6s var(--ease-out);
+}
+.group i {
+  font-style: normal;
+  transition: color 0.4s ease;
+}
+.group::before {
+  content: '';
+  width: 0;
+  height: 1px;
+  background: var(--c-amber);
+  transition: width 0.6s var(--ease-out);
+}
+.group:hover {
+  color: var(--c-dim);
+}
+.groupOn {
+  color: var(--c-text);
+  transform: translateX(4px);
+}
+.groupOn::before {
+  width: 22px;
+}
+.groupOn i {
+  color: var(--c-amber);
+}
+
+/* ── options: bottom centre ── */
+.options {
+  position: absolute;
+  left: 50%;
+  bottom: 68px;
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+}
+.swatches {
+  display: flex;
+  gap: 18px;
+}
+.swatch {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.swatch::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--c-text);
+  opacity: 0;
+  transform: scale(0.72);
+  transition: opacity 0.4s ease, transform 0.6s var(--ease-out);
+}
+.swatchOn::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.swatch:hover:not(.swatchOn)::before {
+  opacity: 0.4;
+  transform: scale(0.9);
+}
+.chip {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: transform 0.5s var(--ease-out);
+}
+.swatch:active .chip {
+  transform: scale(0.88);
+}
+
+.readout {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  min-height: 62px;
+}
+.name {
+  font-size: clamp(1.4rem, 2.2vw, 2.1rem);
+  letter-spacing: -0.03em;
+}
+
+/* ── summary: right ── */
+.summary {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 68px;
+  display: grid;
+  gap: 14px;
+  min-width: 240px;
+}
+.summary ul {
+  list-style: none;
+  display: grid;
+}
+.summary li {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 8px 0;
+  border-top: 1px solid var(--c-line-soft);
+}
+.summary li:last-child {
+  border-bottom: 1px solid var(--c-line-soft);
+}
+.reserve {
+  justify-self: start;
+  padding: 8px 0;
+  color: var(--c-text);
+  border-bottom: 1px solid var(--c-line);
+  transition: border-color 0.4s ease, letter-spacing 0.6s var(--ease-out);
+}
+.reserve span {
+  display: inline-block;
+  transition: transform 0.5s var(--ease-out);
+}
+.reserve:hover {
+  border-color: var(--c-text);
+}
+.reserve:hover span {
+  transform: translateX(6px);
+}
+
+@media (max-width: 900px) {
+  .groups {
+    top: calc(var(--nav-h) + 20vh);
+    left: 0;
+    right: 0;
+    transform: none;
+    display: flex;
+    gap: 18px;
+    padding: 0 var(--gutter);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .group::before {
+    display: none;
+  }
+  .group {
+    white-space: nowrap;
+    padding: 8px 0;
+  }
+  .options {
+    bottom: 52px;
+    width: 100%;
+  }
+  .summary {
+    display: none;
+  }
+  .title {
+    font-size: clamp(1.7rem, 8vw, 2.6rem);
+  }
+}
