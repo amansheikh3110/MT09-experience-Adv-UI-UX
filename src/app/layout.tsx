@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter_Tight, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import { Analytics } from "@vercel/analytics/next"
 
 const display = Inter_Tight({
   subsets: ['latin'],
