@@ -75,6 +75,9 @@ export function CTASection() {
         <footer className={styles.foot} data-foot>
           <span className="mono mono--faint">Concept launch film · not an offer for sale.</span>
           <span className="mono mono--faint">
+            Developed by <a href="https://portfolio-website-mu-bay-12.vercel.app/" target="_blank" rel="noreferrer noopener">Aman Sheikh</a>
+          </span>
+          <span className="mono mono--faint">
             3D model {MODEL_CREDIT.text} ·{' '}
             <a href={MODEL_CREDIT.href} target="_blank" rel="noreferrer noopener">Sketchfab</a> ·{' '}
             <a href={MODEL_CREDIT.licenseHref} target="_blank" rel="noreferrer noopener">{MODEL_CREDIT.license}</a>

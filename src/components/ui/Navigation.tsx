@@ -115,13 +115,18 @@ export function Navigation() {
           ))}
         </nav>
 
-        <button className={styles.menuBtn} onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-label={open ? 'Close menu' : 'Open menu'}>
-          <span className="mono">{open ? 'Close' : 'Menu'}</span>
-          <span className={`${styles.burger} ${open ? styles.burgerOpen : ''}`}>
-            <span />
-            <span />
-          </span>
-        </button>
+        <div className={styles.rightGroup}>
+          <a href="https://portfolio-website-mu-bay-12.vercel.app/" target="_blank" rel="noreferrer noopener" className={`mono ${styles.credit}`}>
+            Developed by Aman Sheikh
+          </a>
+          <button className={styles.menuBtn} onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-label={open ? 'Close menu' : 'Open menu'}>
+            <span className="mono">{open ? 'Close' : 'Menu'}</span>
+            <span className={`${styles.burger} ${open ? styles.burgerOpen : ''}`}>
+              <span />
+              <span />
+            </span>
+          </button>
+        </div>
       </header>
 
       {/* chapter rail */}
